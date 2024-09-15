@@ -1,6 +1,6 @@
 # React Native + Vite
 
-This project is a React Native-based application built using Vite as the development toolchain. It incorporates various modern libraries and tools to ensure a highly scalable, unified, predictable, maintainable, and testable codebase.
+This project is a cross-platform React Native application built using Vite as the development toolchain. It incorporates various modern libraries and tools to ensure a highly scalable, unified, predictable, maintainable, and testable codebase.
 
 All tests use the colocation pattern and has 100% coverage.
 
