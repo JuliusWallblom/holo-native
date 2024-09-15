@@ -4,6 +4,9 @@ declare module "react-native" {
 
   // Explicitly declare StyleSheet as a value
   export const StyleSheet: typeof RNW.StyleSheet
+
+  // Explicitly declare Platform as a value
+  export const Platform: typeof RNW.Platform
 }
 
 declare module "react-native-screens" {

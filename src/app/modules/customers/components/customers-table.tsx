@@ -1,29 +1,26 @@
-import { Table } from "@/components/core"
-import { ColumnDef } from "@tanstack/react-table"
 import { Customer } from "@/app/modules/customers/types"
+import { Table } from "@/components/core"
+import { useQuery } from "@apollo/client"
+import { ColumnDef } from "@tanstack/react-table"
+import { useMemo } from "react"
+import { Text } from "react-native"
+import { GET_CUSTOMERS } from "@/app/modules/customers/graphql/queries"
 
 export function CustomersTable() {
-      const data: Customer[] = [
-        {
-            name: "hey"
-        },
-        {
-            name: "hey2"
-        },
-        {
-            name: "hey3"
-        }
-      ]
-    
-      const columns: ColumnDef<Customer>[] = [
-        {
-          accessorKey: "name",
-          header: "Name",
-          cell: ({ row }) => row.getValue<string>("name")
-        }
-      ]
+  const { loading, error, data } = useQuery<{ customers: Customer[] }>(GET_CUSTOMERS)
 
-    return (
-        <Table data={data} columns={columns} />
-    )
+  const columns: ColumnDef<Customer>[] = useMemo(() => [
+    {
+      accessorKey: "fullName",
+      header: () => <Text>Full Name</Text>,
+      cell: ({ row }) => <Text>{row.getValue<string>("fullName")}</Text>
+    }
+  ], [])
+
+  if (loading) return <Text>Loading...</Text>
+  if (error) return <Text>Error: {error.message}</Text>
+
+  return (
+    <Table data={data?.customers || []} columns={columns} />
+  )
 }
