@@ -1,7 +1,7 @@
 import React from "react"
 import { renderHook, act, waitFor } from "@testing-library/react"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import { useRESTQuery, useRESTMutation } from "./use-rest-api"
+import { useRESTQuery, useRESTMutation } from "@/hooks/use-rest-api"
 import { AxiosClient } from "@/lib/axios-client"
 
 jest.mock("@/lib/axios-client")

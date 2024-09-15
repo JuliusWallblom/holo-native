@@ -11,7 +11,7 @@ describe("Apollo Client", () => {
   beforeEach(() => {
     jest.clearAllMocks()
     jest.isolateModules(() => {
-      apolloClient = jest.requireActual("./apollo-client").apolloClient
+      apolloClient = jest.requireActual("@/lib/apollo-client").apolloClient
     })
   })
 
@@ -37,8 +37,9 @@ describe("Apollo Client", () => {
 
     jest.isolateModules(() => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { apolloClient: freshClient } =
-        jest.requireActual("./apollo-client")
+      const { apolloClient: freshClient } = jest.requireActual(
+        "@/lib/apollo-client"
+      )
       expect(ApolloClient).toHaveBeenCalledWith({
         link: mockHttpLink,
         cache: mockCache
@@ -60,7 +61,7 @@ describe("Apollo Client", () => {
     ;(ApolloClient as jest.Mock).mockImplementation(mockApolloClient)
 
     jest.isolateModules(() => {
-      jest.requireActual("./apollo-client")
+      jest.requireActual("@/lib/apollo-client")
     })
 
     expect(mockCreateHttpLink).toHaveBeenCalledWith({

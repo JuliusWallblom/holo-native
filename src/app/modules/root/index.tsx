@@ -1,9 +1,9 @@
 import { Text, View } from "react-native"
 
-export default function HomeScreen() {
+export function RootScreen() {
   return (
     <View>
-      <Text>Home Screen</Text>
+      <Text>React Native + Vite</Text>
     </View>
   )
 }

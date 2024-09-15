@@ -1,5 +1,5 @@
-const { getDefaultConfig, mergeConfig } = require("@react-native/metro-config");
-const path = require('path');
+const { getDefaultConfig, mergeConfig } = require("@react-native/metro-config")
+const path = require("path")
 
 /**
  * Metro configuration
@@ -10,11 +10,11 @@ const path = require('path');
 const config = {
   resolver: {
     extraNodeModules: {
-      '@': path.resolve(__dirname, 'src'),
-    },
+      "@": path.resolve(__dirname, "src")
+    }
   },
-  watchFolders: [path.resolve(__dirname, 'src')],
-};
+  watchFolders: [path.resolve(__dirname, "src")]
+}
 
 // Export the merged configuration
-module.exports = mergeConfig(getDefaultConfig(__dirname), config);
+module.exports = mergeConfig(getDefaultConfig(__dirname), config)
