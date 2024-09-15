@@ -7,8 +7,9 @@ All tests use the colocation pattern and has 100% coverage.
 ## Technologies Used
 
 - React 18.3
-- React Native 0.75.3
-- React Native Web 0.19.12
+- React Native 0.75
+- React Native Web 0.19
+- React Navigation 6
 - Vite
 - Axios
 - GraphQL
