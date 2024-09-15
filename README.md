@@ -1,79 +1,102 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native + Vite
 
-# Getting Started
+This project is a React Native-based application built using Vite as the development toolchain. It incorporates various modern libraries and tools to ensure a highly scalable, unified, predictable, maintainable, and testable codebase.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+All tests use the colocation pattern and has 100% coverage.
 
-## Step 1: Start the Metro Server
+## Technologies Used
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+- React 18.3
+- React Native 0.75.3
+- React Native Web 0.19.12
+- Vite
+- Axios
+- GraphQL
+- Apollo Client (for GraphQL queries & mutations)
+- Tanstack Query (for REST queries & mutations)
+- Tanstack Router
+- Jest
+- ESLint
+- Prettier
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Getting Started
 
-```bash
-# using npm
-npm start
+### Installing the node packages
 
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
+To install the node packages, run the following command from the root directory of the project:
 
 ```bash
-# using npm
-npm run ios
+#using npm
+npm install
 
-# OR using Yarn
-yarn ios
+#using yarn
+yarn install
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+### Running the development server
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+To run the development server, run the following command from the root directory of the project:
 
-## Step 3: Modifying your App
+```bash
+#using npm
+npm run dev
 
-Now that you have successfully run the app, let's modify it.
+#using yarn
+yarn dev
+```
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+### Building web for production
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+To build the web application for production, run the following command from the root directory of the project:
 
-## Congratulations! :tada:
+```bash
+#using npm
+npm run build:web
 
-You've successfully run and modified your React Native App. :partying_face:
+#using yarn
+yarn build:web
+```
 
-### Now what?
+### Running the Tests
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+To run the tests, run the following command from the root directory of the project:
 
-# Troubleshooting
+```bash
+#using npm
+npm run test
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+#using yarn
+yarn test
+```
 
-# Learn More
+#### Watch
 
-To learn more about React Native, take a look at the following resources:
+```bash
+#using npm
+npm run test:watch
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+#using yarn
+yarn test:watch
+```
+
+#### With coverage
+
+```bash
+#using npm
+npm run test:coverage
+
+#using yarn
+yarn test:coverage
+```
+
+## Project Structure
+
+- `src/app`: Anything related to the entry-point of the application
+- `src/assets`: Graphical assets
+- `src/components`: UI & core components
+- `src/constants`: General constants not related to a particular module
+- `src/hooks`: General hooks not related to a particular module
+- `src/lib`: Implementations of third-party libraries
+- `src/styles`: Stylesheets not related to a particular module
+- `src/types`: General types not related to a particular module
+- `src/utils`: General helper functions & utilities not related to a particular module
