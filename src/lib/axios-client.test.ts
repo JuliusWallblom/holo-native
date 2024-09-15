@@ -12,8 +12,8 @@ const mockAxiosInstance = {
   delete: jest.fn(),
   interceptors: {
     request: { use: jest.fn() },
-    response: { use: jest.fn() },
-  },
+    response: { use: jest.fn() }
+  }
 }
 
 describe("AxiosClient", () => {
@@ -52,8 +52,8 @@ describe("AxiosClient", () => {
         baseURL: "/api/test/",
         timeout: expect.any(Number),
         headers: {
-          "Content-Type": "application/json",
-        },
+          "Content-Type": "application/json"
+        }
       })
     })
 
@@ -81,13 +81,13 @@ describe("AxiosClient", () => {
 
       // Test server error with message
       const serverError = {
-        response: { status: 500, data: { message: "Server Error" } },
+        response: { status: 500, data: { message: "Server Error" } }
       }
       expect(() => interceptor(serverError)).rejects.toThrow("Server Error")
 
       // Test server error without message
       const serverErrorNoMessage = {
-        response: { status: 404, data: "Not Found" },
+        response: { status: 404, data: "Not Found" }
       }
       expect(() => interceptor(serverErrorNoMessage)).rejects.toThrow(
         "Not Found"
@@ -121,7 +121,7 @@ describe("AxiosClient", () => {
 
       expect(mockAxiosInstance.request).toHaveBeenCalledWith({
         method: "get",
-        url: "get?key=1&value=2",
+        url: "get?key=1&value=2"
       })
     })
 
@@ -135,7 +135,7 @@ describe("AxiosClient", () => {
       expect(mockAxiosInstance.request).toHaveBeenCalledWith({
         method: "post",
         url: "test-url",
-        data: {},
+        data: {}
       })
     })
 
@@ -156,7 +156,7 @@ describe("AxiosClient", () => {
         method: "post",
         url: "test-url",
         data: mockData,
-        headers: { "Custom-Header": "Test" },
+        headers: { "Custom-Header": "Test" }
       })
     })
 
@@ -170,7 +170,7 @@ describe("AxiosClient", () => {
       expect(mockAxiosInstance.request).toHaveBeenCalledWith({
         method: "put",
         url: "test-url",
-        data: {},
+        data: {}
       })
     })
 
@@ -191,7 +191,7 @@ describe("AxiosClient", () => {
         method: "put",
         url: "test-url",
         data: mockData,
-        headers: { "Custom-Header": "Test" },
+        headers: { "Custom-Header": "Test" }
       })
     })
 
@@ -204,7 +204,7 @@ describe("AxiosClient", () => {
       expect(result).toEqual(mockResponse)
       expect(mockAxiosInstance.request).toHaveBeenCalledWith({
         method: "delete",
-        url: "test-url",
+        url: "test-url"
       })
     })
 
@@ -222,7 +222,7 @@ describe("AxiosClient", () => {
       expect(mockAxiosInstance.request).toHaveBeenCalledWith({
         method: "delete",
         url: "test-url",
-        headers: { "Custom-Header": "Test" },
+        headers: { "Custom-Header": "Test" }
       })
     })
 
@@ -240,8 +240,8 @@ describe("AxiosClient", () => {
       const errorResponse = {
         response: {
           status: 500,
-          data: { message: "Internal Server Error" },
-        },
+          data: { message: "Internal Server Error" }
+        }
       }
       mockAxiosInstance.request.mockRejectedValue(errorResponse)
 
@@ -252,7 +252,7 @@ describe("AxiosClient", () => {
     it("should handle network errors", async () => {
       const errorResponse = {
         request: {},
-        message: "Network Error",
+        message: "Network Error"
       }
       mockAxiosInstance.request.mockRejectedValue(errorResponse)
 

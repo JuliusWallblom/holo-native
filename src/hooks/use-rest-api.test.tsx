@@ -14,15 +14,15 @@ const mockAxiosClient: MockAxiosClient = {
   get: jest.fn(),
   post: jest.fn(),
   put: jest.fn(),
-  delete: jest.fn(),
+  delete: jest.fn()
 }
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      retry: false,
-    },
-  },
+      retry: false
+    }
+  }
 })
 
 const wrapper = ({ children }: { children: React.ReactNode }) => (
@@ -129,7 +129,7 @@ describe("useRESTMutation", () => {
     await waitFor(() => expect(result.current.isSuccess).toBe(true))
 
     expect(mockAxiosClient.put).toHaveBeenCalledWith("/test/1", {
-      name: "Updated Test",
+      name: "Updated Test"
     })
     expect(result.current.data).toEqual(mockResponse)
   })
@@ -155,7 +155,7 @@ describe("useRESTMutation", () => {
     await waitFor(() => expect(result.current.isSuccess).toBe(true))
 
     expect(mockAxiosClient.delete).toHaveBeenCalledWith("/test/1", {
-      data: { id: 1 },
+      data: { id: 1 }
     })
     expect(result.current.data).toEqual(mockResponse)
   })

@@ -8,7 +8,7 @@
     "web": "vite",
     "build:web": "vite build",
     "preview:web": "vite preview",
-    "prettier": "prettier --write \"src/**/*.{ts,mts,tsx,js,mjs,jsx,json,css,scss,md,mdx,html}\"",
+    "prettier": "prettier --write \"src/**/*.{ts,mts,tsx,js,mjs,jsx,json,css,scss,md,mdx,html}\" \"index.js\" \"metro.config.mjs\" \"babel.config.js\" \"vite.config.mjs\" \"jest.config.mjs\" \".eslintrc\" \".prettierrc\"",
     "lint": "eslint .",
     "test": "jest",
     "test:watch": "jest --watchAll",

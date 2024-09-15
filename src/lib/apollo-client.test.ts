@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client"
 
 jest.mock("@apollo/client")
 jest.mock("@/constants", () => ({
-  APOLLO_CLIENT_ENDPOINT: "https://test-graphql-endpoint.com/graphql",
+  APOLLO_CLIENT_ENDPOINT: "https://test-graphql-endpoint.com/graphql"
 }))
 
 describe("Apollo Client", () => {
@@ -21,7 +21,7 @@ describe("Apollo Client", () => {
 
   it("should create a httpLink with the correct URI when APOLLO_CLIENT_ENDPOINT is defined", () => {
     expect(createHttpLink).toHaveBeenCalledWith({
-      uri: "https://test-graphql-endpoint.com/graphql",
+      uri: "https://test-graphql-endpoint.com/graphql"
     })
   })
 
@@ -41,14 +41,14 @@ describe("Apollo Client", () => {
         jest.requireActual("./apollo-client")
       expect(ApolloClient).toHaveBeenCalledWith({
         link: mockHttpLink,
-        cache: mockCache,
+        cache: mockCache
       })
     })
   })
 
   it("should create a httpLink with fallback URI when APOLLO_CLIENT_ENDPOINT is null", () => {
     jest.mock("@/constants", () => ({
-      APOLLO_CLIENT_ENDPOINT: null,
+      APOLLO_CLIENT_ENDPOINT: null
     }))
 
     const mockCreateHttpLink = jest.fn().mockReturnValue({})
@@ -64,13 +64,13 @@ describe("Apollo Client", () => {
     })
 
     expect(mockCreateHttpLink).toHaveBeenCalledWith({
-      uri: "/graphql",
+      uri: "/graphql"
     })
 
     expect(mockApolloClient).toHaveBeenCalledWith(
       expect.objectContaining({
         link: expect.anything(),
-        cache: expect.any(Object),
+        cache: expect.any(Object)
       })
     )
   })

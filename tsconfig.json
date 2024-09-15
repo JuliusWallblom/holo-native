@@ -1,6 +1,6 @@
 {
   "extends": "@react-native/typescript-config/tsconfig.json",
-    "compilerOptions": {
+  "compilerOptions": {
     "typeRoots": ["./node_modules/@types", "./types"],
     "jsx": "react-jsx",
     "esModuleInterop": true,
@@ -9,5 +9,5 @@
     "paths": {
       "@/*": ["./src/*"]
     }
-  },
+  }
 }

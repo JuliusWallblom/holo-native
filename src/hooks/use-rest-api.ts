@@ -2,7 +2,7 @@ import {
   useQuery,
   useMutation,
   UseQueryOptions,
-  UseMutationOptions,
+  UseMutationOptions
 } from "@tanstack/react-query"
 import { AxiosClient } from "@/lib/axios-client"
 import { AxiosRequestConfig } from "axios"
@@ -18,7 +18,7 @@ export function useRESTQuery<T>(
   return useQuery<RESTResponse<T>, RESTError>({
     queryKey: key,
     queryFn: () => axiosClient[method]<RESTResponse<T>>(url),
-    ...config,
+    ...config
   })
 }
 
@@ -32,12 +32,12 @@ export function useRESTMutation<T, TVariables>(
     mutationFn: (variables) => {
       if (method === "delete") {
         return axiosClient[method]<RESTResponse<T>>(url, {
-          data: variables,
+          data: variables
         } as AxiosRequestConfig)
       } else {
         return axiosClient[method]<RESTResponse<T>>(url, variables)
       }
     },
-    ...config,
+    ...config
   })
 }

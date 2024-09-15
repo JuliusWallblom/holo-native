@@ -3,7 +3,7 @@ import axios, {
   AxiosError,
   AxiosInstance,
   AxiosRequestConfig,
-  AxiosResponse,
+  AxiosResponse
 } from "axios"
 
 export class AxiosClient {
@@ -14,8 +14,8 @@ export class AxiosClient {
       baseURL,
       timeout: AXIOS_CLIENT_TIMEOUT,
       headers: {
-        "Content-Type": "application/json",
-      },
+        "Content-Type": "application/json"
+      }
     })
 
     this.setupInterceptors()
@@ -57,7 +57,7 @@ export class AxiosClient {
         method,
         url,
         ...config,
-        data,
+        data
       })
       return response.data
     } catch (error) {
