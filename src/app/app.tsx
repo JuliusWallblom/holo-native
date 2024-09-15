@@ -1,13 +1,13 @@
-import { appStyles as styles } from "@/styles"
-import { Text, View } from "react-native"
 import { Providers } from "@/app/providers"
+import { NavigationContainer } from "@react-navigation/native"
+import { RootStack } from "@/app/stacks"
 
 export default function App() {
   return (
     <Providers>
-      <View style={styles.container}>
-        <Text style={styles.text}>React Native + Vite</Text>
-      </View>
+      <NavigationContainer>
+        <RootStack />
+      </NavigationContainer>
     </Providers>
   )
 }
