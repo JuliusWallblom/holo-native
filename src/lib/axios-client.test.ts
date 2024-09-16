@@ -22,9 +22,7 @@ describe("AxiosClient", () => {
 
   beforeEach(() => {
     jest.resetAllMocks()
-    jest
-      .mocked(axios.create)
-      .mockReturnValue(mockAxiosInstance as unknown as AxiosInstance)
+    jest.mocked(axios.create).mockReturnValue(mockAxiosInstance as unknown as AxiosInstance)
     axiosClient = new AxiosClient("/api/test/")
 
     consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {})
@@ -36,14 +34,11 @@ describe("AxiosClient", () => {
 
   describe("constructor and interceptors", () => {
     it("should handle errors with no message in interceptor", () => {
-      const interceptor =
-        mockAxiosInstance.interceptors.response.use.mock.calls[0][1]
+      const interceptor = mockAxiosInstance.interceptors.response.use.mock.calls[0][1]
       const errorWithoutMessage = new Error()
       errorWithoutMessage.message = "" // Explicitly set an empty message
 
-      expect(() => interceptor(errorWithoutMessage)).rejects.toThrow(
-        "An unknown error occurred"
-      )
+      expect(() => interceptor(errorWithoutMessage)).rejects.toThrow("An unknown error occurred")
       expect(consoleErrorSpy).toHaveBeenCalled()
     })
 
@@ -58,8 +53,7 @@ describe("AxiosClient", () => {
     })
 
     it("should pass through successful responses in interceptor", () => {
-      const interceptor =
-        mockAxiosInstance.interceptors.response.use.mock.calls[0][0]
+      const interceptor = mockAxiosInstance.interceptors.response.use.mock.calls[0][0]
       const mockResponse = { data: { success: true } }
       expect(interceptor(mockResponse)).toBe(mockResponse)
     })
@@ -69,15 +63,13 @@ describe("AxiosClient", () => {
     })
 
     it("should handle error with no response or request", () => {
-      const interceptor =
-        mockAxiosInstance.interceptors.response.use.mock.calls[0][1]
+      const interceptor = mockAxiosInstance.interceptors.response.use.mock.calls[0][1]
       const error = new Error("Test error")
       expect(() => interceptor(error)).rejects.toThrow("Test error")
     })
 
     it("should handle different types of errors in interceptor", () => {
-      const interceptor =
-        mockAxiosInstance.interceptors.response.use.mock.calls[0][1]
+      const interceptor = mockAxiosInstance.interceptors.response.use.mock.calls[0][1]
 
       // Test server error with message
       const serverError = {
@@ -89,21 +81,15 @@ describe("AxiosClient", () => {
       const serverErrorNoMessage = {
         response: { status: 404, data: "Not Found" }
       }
-      expect(() => interceptor(serverErrorNoMessage)).rejects.toThrow(
-        "Not Found"
-      )
+      expect(() => interceptor(serverErrorNoMessage)).rejects.toThrow("Not Found")
 
       // Test server error with no data
       const serverErrorNoData = { response: { status: 500 } }
-      expect(() => interceptor(serverErrorNoData)).rejects.toThrow(
-        "Server error: 500"
-      )
+      expect(() => interceptor(serverErrorNoData)).rejects.toThrow("Server error: 500")
 
       // Test network error
       const networkError = { request: {} }
-      expect(() => interceptor(networkError)).rejects.toThrow(
-        "No response received from the server"
-      )
+      expect(() => interceptor(networkError)).rejects.toThrow("No response received from the server")
 
       // Test unknown error
       const unknownError = new Error("Unknown")
@@ -145,11 +131,7 @@ describe("AxiosClient", () => {
       const mockResponse = { result: "success" }
       mockAxiosInstance.request.mockResolvedValue({ data: mockResponse })
 
-      const result = await axiosClient.post<{ result: string }>(
-        "test-url",
-        mockData,
-        mockConfig
-      )
+      const result = await axiosClient.post<{ result: string }>("test-url", mockData, mockConfig)
 
       expect(result).toEqual(mockResponse)
       expect(mockAxiosInstance.request).toHaveBeenCalledWith({
@@ -180,11 +162,7 @@ describe("AxiosClient", () => {
       const mockResponse = { result: "updated" }
       mockAxiosInstance.request.mockResolvedValue({ data: mockResponse })
 
-      const result = await axiosClient.put<{ result: string }>(
-        "test-url",
-        mockData,
-        mockConfig
-      )
+      const result = await axiosClient.put<{ result: string }>("test-url", mockData, mockConfig)
 
       expect(result).toEqual(mockResponse)
       expect(mockAxiosInstance.request).toHaveBeenCalledWith({
@@ -213,10 +191,7 @@ describe("AxiosClient", () => {
       const mockResponse = { result: "deleted" }
       mockAxiosInstance.request.mockResolvedValue({ data: mockResponse })
 
-      const result = await axiosClient.delete<{ result: string }>(
-        "test-url",
-        mockConfig
-      )
+      const result = await axiosClient.delete<{ result: string }>("test-url", mockConfig)
 
       expect(result).toEqual(mockResponse)
       expect(mockAxiosInstance.request).toHaveBeenCalledWith({

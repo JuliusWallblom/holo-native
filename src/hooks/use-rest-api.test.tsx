@@ -25,9 +25,7 @@ const queryClient = new QueryClient({
   }
 })
 
-const wrapper = ({ children }: { children: React.ReactNode }) => (
-  <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-)
+const wrapper = ({ children }: { children: React.ReactNode }) => <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 
 describe("useRESTQuery", () => {
   beforeEach(() => {
@@ -39,16 +37,7 @@ describe("useRESTQuery", () => {
     const mockResponse = { data: { id: 1, name: "Test" } }
     mockAxiosClient.get.mockResolvedValue(mockResponse)
 
-    const { result } = renderHook(
-      () =>
-        useRESTQuery(
-          mockAxiosClient as unknown as AxiosClient,
-          ["test"],
-          "get",
-          "/test"
-        ),
-      { wrapper }
-    )
+    const { result } = renderHook(() => useRESTQuery(mockAxiosClient as unknown as AxiosClient, ["test"], "get", "/test"), { wrapper })
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true))
 
@@ -60,16 +49,7 @@ describe("useRESTQuery", () => {
     const mockError = new Error("API Error")
     mockAxiosClient.get.mockRejectedValue(mockError)
 
-    const { result } = renderHook(
-      () =>
-        useRESTQuery(
-          mockAxiosClient as unknown as AxiosClient,
-          ["test"],
-          "get",
-          "/test"
-        ),
-      { wrapper }
-    )
+    const { result } = renderHook(() => useRESTQuery(mockAxiosClient as unknown as AxiosClient, ["test"], "get", "/test"), { wrapper })
 
     await waitFor(() => expect(result.current.isError).toBe(true))
 
@@ -88,15 +68,7 @@ describe("useRESTMutation", () => {
     const mockResponse = { data: { id: 1, name: "Test" } }
     mockAxiosClient.post.mockResolvedValue(mockResponse)
 
-    const { result } = renderHook(
-      () =>
-        useRESTMutation(
-          mockAxiosClient as unknown as AxiosClient,
-          "post",
-          "/test"
-        ),
-      { wrapper }
-    )
+    const { result } = renderHook(() => useRESTMutation(mockAxiosClient as unknown as AxiosClient, "post", "/test"), { wrapper })
 
     await act(async () => {
       await result.current.mutateAsync({ name: "Test" })
@@ -112,15 +84,7 @@ describe("useRESTMutation", () => {
     const mockResponse = { data: { id: 1, name: "Updated Test" } }
     mockAxiosClient.put.mockResolvedValue(mockResponse)
 
-    const { result } = renderHook(
-      () =>
-        useRESTMutation(
-          mockAxiosClient as unknown as AxiosClient,
-          "put",
-          "/test/1"
-        ),
-      { wrapper }
-    )
+    const { result } = renderHook(() => useRESTMutation(mockAxiosClient as unknown as AxiosClient, "put", "/test/1"), { wrapper })
 
     await act(async () => {
       await result.current.mutateAsync({ name: "Updated Test" })
@@ -138,15 +102,7 @@ describe("useRESTMutation", () => {
     const mockResponse = { data: { success: true } }
     mockAxiosClient.delete.mockResolvedValue(mockResponse)
 
-    const { result } = renderHook(
-      () =>
-        useRESTMutation(
-          mockAxiosClient as unknown as AxiosClient,
-          "delete",
-          "/test/1"
-        ),
-      { wrapper }
-    )
+    const { result } = renderHook(() => useRESTMutation(mockAxiosClient as unknown as AxiosClient, "delete", "/test/1"), { wrapper })
 
     await act(async () => {
       await result.current.mutateAsync({ id: 1 })
@@ -164,15 +120,7 @@ describe("useRESTMutation", () => {
     const mockError = new Error("API Error")
     mockAxiosClient.post.mockRejectedValue(mockError)
 
-    const { result } = renderHook(
-      () =>
-        useRESTMutation(
-          mockAxiosClient as unknown as AxiosClient,
-          "post",
-          "/test"
-        ),
-      { wrapper }
-    )
+    const { result } = renderHook(() => useRESTMutation(mockAxiosClient as unknown as AxiosClient, "post", "/test"), { wrapper })
 
     await act(async () => {
       try {

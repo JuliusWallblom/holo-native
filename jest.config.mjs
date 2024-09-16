@@ -1,9 +1,7 @@
 export default {
   preset: "react-native",
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
-  transformIgnorePatterns: [
-    "node_modules/(?!(react-native|@react-native|react-native-vector-icons)/)"
-  ],
+  transformIgnorePatterns: ["node_modules/(?!(react-native|@react-native|react-native-vector-icons)/)"],
   testPathIgnorePatterns: ["/node_modules/", "/android/", "/ios/"],
   testEnvironment: "jsdom",
   roots: ["<rootDir>/src"],

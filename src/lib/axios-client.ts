@@ -1,10 +1,5 @@
 import { AXIOS_CLIENT_TIMEOUT } from "@/constants"
-import axios, {
-  AxiosError,
-  AxiosInstance,
-  AxiosRequestConfig,
-  AxiosResponse
-} from "axios"
+import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios"
 
 export class AxiosClient {
   private readonly instance: AxiosInstance
@@ -46,12 +41,7 @@ export class AxiosClient {
     )
   }
 
-  private async request<T>(
-    method: "get" | "post" | "put" | "delete",
-    url: string,
-    config?: AxiosRequestConfig,
-    data?: unknown
-  ): Promise<T> {
+  private async request<T>(method: "get" | "post" | "put" | "delete", url: string, config?: AxiosRequestConfig, data?: unknown): Promise<T> {
     try {
       const response: AxiosResponse<T> = await this.instance.request({
         method,
@@ -83,26 +73,15 @@ export class AxiosClient {
     return this.request<T>("get", url, config)
   }
 
-  public async post<T>(
-    url: string,
-    data: unknown = {},
-    config: AxiosRequestConfig = {}
-  ): Promise<T> {
+  public async post<T>(url: string, data: unknown = {}, config: AxiosRequestConfig = {}): Promise<T> {
     return this.request<T>("post", url, config, data)
   }
 
-  public async put<T>(
-    url: string,
-    data: unknown = {},
-    config: AxiosRequestConfig = {}
-  ): Promise<T> {
+  public async put<T>(url: string, data: unknown = {}, config: AxiosRequestConfig = {}): Promise<T> {
     return this.request<T>("put", url, config, data)
   }
 
-  public async delete<T>(
-    url: string,
-    config: AxiosRequestConfig = {}
-  ): Promise<T> {
+  public async delete<T>(url: string, config: AxiosRequestConfig = {}): Promise<T> {
     return this.request<T>("delete", url, config)
   }
 }

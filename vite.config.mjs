@@ -1,18 +1,7 @@
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 
-const extensions = [
-  ".web.tsx",
-  ".tsx",
-  ".web.ts",
-  ".ts",
-  ".web.jsx",
-  ".jsx",
-  ".web.js",
-  ".js",
-  ".css",
-  ".json"
-]
+const extensions = [".web.tsx", ".tsx", ".web.ts", ".ts", ".web.jsx", ".jsx", ".web.js", ".js", ".css", ".json"]
 
 export default defineConfig({
   plugins: [react()],

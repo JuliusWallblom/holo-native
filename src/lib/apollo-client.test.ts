@@ -37,9 +37,7 @@ describe("Apollo Client", () => {
 
     jest.isolateModules(() => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { apolloClient: freshClient } = jest.requireActual(
-        "@/lib/apollo-client"
-      )
+      const { apolloClient: freshClient } = jest.requireActual("@/lib/apollo-client")
       expect(ApolloClient).toHaveBeenCalledWith({
         link: mockHttpLink,
         cache: mockCache
