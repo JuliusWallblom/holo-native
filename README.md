@@ -1,4 +1,4 @@
-# React Native + Vite
+# Holo
 
 This project is a cross-platform React Native application built using Vite as the development toolchain. It incorporates various modern libraries and tools to ensure a highly scalable, unified, predictable, maintainable, and testable codebase.
 
